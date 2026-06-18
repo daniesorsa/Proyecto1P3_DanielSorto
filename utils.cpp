@@ -18,6 +18,7 @@ using namespace std;
 void mostrarAyuda() {
     cout << "Uso: " << AMARILLO << "Projecto_1.exe" << RESET << " ACCIÓN " << FONDO_MORADO << "[VARIABLES]" << RESET << "\n";
     cout << "  calculos de perímetro y área de Figuras Planas.\n";
+    cout << "       Donde:\n";
     cout << "          ACCIÓN:\n";
     cout << "              " << AMARILLO << "ayuda"         << RESET << "           | Información sobre el uso del programa.\n\n";
     cout << "              " << AMARILLO << "triángulo"     << RESET << "       | VARIABLES: " << FONDO_MORADO << "a b c h"    << RESET << "\n";

@@ -18,5 +18,87 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="circulo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cometa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cuadrado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="paralelogramo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rectangulo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rombo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="trapecio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="triangulo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="circulo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cometa.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cuadrado.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="paralelogramo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rectangulo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rombo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="trapecio.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="triangulo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="circulo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="cometa.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="cuadrado.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="paralelogramo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="rectangulo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="rombo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="trapecio.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="triangulo.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

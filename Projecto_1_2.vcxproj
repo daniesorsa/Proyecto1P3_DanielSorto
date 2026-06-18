@@ -139,7 +139,37 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="circulo.cpp" />
+    <ClCompile Include="cometa.cpp" />
+    <ClCompile Include="cuadrado.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="paralelogramo.cpp" />
+    <ClCompile Include="rectangulo.cpp" />
+    <ClCompile Include="rombo.cpp" />
+    <ClCompile Include="trapecio.cpp" />
+    <ClCompile Include="triangulo.cpp" />
+    <ClCompile Include="utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="circulo.h" />
+    <ClInclude Include="cometa.h" />
+    <ClInclude Include="cuadrado.h" />
+    <ClInclude Include="paralelogramo.h" />
+    <ClInclude Include="rectangulo.h" />
+    <ClInclude Include="rombo.h" />
+    <ClInclude Include="trapecio.h" />
+    <ClInclude Include="triangulo.h" />
+    <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="circulo.txt" />
+    <Text Include="cometa.txt" />
+    <Text Include="cuadrado.txt" />
+    <Text Include="paralelogramo.txt" />
+    <Text Include="rectangulo.txt" />
+    <Text Include="rombo.txt" />
+    <Text Include="trapecio.txt" />
+    <Text Include="triangulo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
