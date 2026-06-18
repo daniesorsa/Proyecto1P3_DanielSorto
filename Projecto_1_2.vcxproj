@@ -148,7 +148,7 @@
     <ClCompile Include="rombo.cpp" />
     <ClCompile Include="trapecio.cpp" />
     <ClCompile Include="triangulo.cpp" />
-    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="funciones.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="circulo.h" />
@@ -159,7 +159,7 @@
     <ClInclude Include="rombo.h" />
     <ClInclude Include="trapecio.h" />
     <ClInclude Include="triangulo.h" />
-    <ClInclude Include="utils.h" />
+    <ClInclude Include="funciones.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="circulo.txt" />

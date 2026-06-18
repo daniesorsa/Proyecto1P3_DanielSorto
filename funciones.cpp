@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "funciones.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -16,8 +16,8 @@
 using namespace std;
 
 void mostrarAyuda() {
-    cout << "Uso: " << AMARILLO << "Projecto_1.exe" << RESET << " ACCIÓN " << FONDO_MORADO << "[VARIABLES]" << RESET << "\n";
-    cout << "  calculos de perímetro y área de Figuras Planas.\n";
+    cout << "Uso: " << AMARILLO << "Figuras_Planas.exe" << RESET << " ACCIÓN " << FONDO_MORADO << "[VARIABLES]" << RESET << "\n";
+    cout << "       Calculos de perímetro y área de Figuras Planas.\n";
     cout << "       Donde:\n";
     cout << "          ACCIÓN:\n";
     cout << "              " << AMARILLO << "ayuda"         << RESET << "           | Información sobre el uso del programa.\n\n";
@@ -109,23 +109,64 @@ void colorearPalabra(string& texto, const string& palabra, const string& color) 
 }
 
 void dibujarFigura(OpcionFigura opcion, const vector<string>& args) {
+    for (int indice = 0; indice < args.size(); indice++) {
+        if (args.at(indice).size() > 5) {
+            cout << "\nNumero muy grande, ingrese numeros menores a 5 digitos.\n";
+            mostrarAyuda();
+            return;
+        }
+    }
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
     int numVars = (int)args.size() - 2;
     try {
         switch (opcion) {
-            case TRIANGULO:     if (numVars == 4) Triangulo(stod(args[2]), stod(args[3]), stod(args[4]), stod(args[5])).dibujar();                              else mostrarAyuda(); break;
-            case PARALELOGRAMO: if (numVars == 3) Paralelogramo(stod(args[2]), stod(args[3]), stod(args[4])).dibujar();                                         else mostrarAyuda(); break;
-            case RECTANGULO:    if (numVars == 2) Rectangulo(stod(args[2]), stod(args[3])).dibujar();                                                           else mostrarAyuda(); break;
-            case CUADRADO:      if (numVars == 1) Cuadrado(stod(args[2])).dibujar();                                                                            else mostrarAyuda(); break;
-            case ROMBO:         if (numVars == 3) Rombo(stod(args[2]), stod(args[3]), stod(args[4])).dibujar();                                                 else mostrarAyuda(); break;
-            case COMETA:        if (numVars == 4) Cometa(stod(args[2]), stod(args[3]), stod(args[4]), stod(args[5])).dibujar();                                 else mostrarAyuda(); break;
-            case TRAPECIO:      if (numVars == 5) Trapecio(stod(args[2]), stod(args[3]), stod(args[4]), stod(args[5]), stod(args[6])).dibujar();                else mostrarAyuda(); break;
-            case CIRCULO:       if (numVars == 1) Circulo(stod(args[2])).dibujar();                                                                             else mostrarAyuda(); break;
-            default:            mostrarAyuda(); break;
+            case TRIANGULO:
+                if (numVars == 4)
+                    Triangulo(stod(args[2]), stod(args[3]), stod(args[4]), stod(args[5])).dibujar();
+                else mostrarAyuda();
+                break;
+            case PARALELOGRAMO:
+                if (numVars == 3)
+                    Paralelogramo(stod(args[2]), stod(args[3]), stod(args[4])).dibujar();
+                else mostrarAyuda();
+                break;
+            case RECTANGULO:
+                if (numVars == 2)
+                    Rectangulo(stod(args[2]), stod(args[3])).dibujar();
+                else mostrarAyuda();
+                break;
+            case CUADRADO:
+                if (numVars == 1)
+                    Cuadrado(stod(args[2])).dibujar();
+                else mostrarAyuda();
+                break;
+            case ROMBO:
+                if (numVars == 3)
+                    Rombo(stod(args[2]), stod(args[3]), stod(args[4])).dibujar();
+                else mostrarAyuda();
+                break;
+            case COMETA:
+                if (numVars == 4)
+                    Cometa(stod(args[2]), stod(args[3]), stod(args[4]), stod(args[5])).dibujar();
+                else mostrarAyuda();
+                break;
+            case TRAPECIO:
+                if (numVars == 5)
+                    Trapecio(stod(args[2]), stod(args[3]), stod(args[4]), stod(args[5]), stod(args[6])).dibujar();
+                else mostrarAyuda();
+                break;
+            case CIRCULO:
+                if (numVars == 1)
+                    Circulo(stod(args[2])).dibujar();
+                else mostrarAyuda();
+                break;
+            default:
+                mostrarAyuda();
+                break;
         }
     } catch (...) {
-        cout << AMARILLO << "Error: Por favor ingrese valores numéricos válidos.\n\n" << RESET;
+        cout << AMARILLO << "Error: Ingrese numér válidos.\n\n" << RESET;
         mostrarAyuda();
     }
 }

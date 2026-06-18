@@ -42,7 +42,7 @@
     <ClCompile Include="triangulo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utils.cpp">
+    <ClCompile Include="funciones.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClInclude Include="triangulo.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="funciones.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
