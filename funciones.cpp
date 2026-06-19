@@ -12,7 +12,11 @@
 #include "trapecio.h"
 #include "circulo.h"
 
+using namespace std;
+
 void mostrarAyuda() {
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
     cout << "Uso: " << AMARILLO << "Figuras_Planas.exe" << RESET << " ACCIÓN " << FONDO_MORADO << "[VARIABLES]" << RESET << "\n";
     cout << "       Calculos de perímetro y área de Figuras Planas.\n";
     cout << "       Donde:\n";

@@ -4,7 +4,7 @@
 Rectangulo::Rectangulo(double a, double b) : a(a), b(b) {}
 
 void Rectangulo::dibujar() {
-    string texto = leerArchivo("rectangulo.txt");
+    std::string texto = leerArchivo("rectangulo.txt");
     colorearPalabra(texto, "Rectángulo", AMARILLO_CLARO);
     colorearPalabra(texto, "Desarrollo", VERDE);
     texto = sustitucionRegex(texto, "\\{aaa\\}", a, 5, { MORADO, AZUL });
@@ -12,5 +12,5 @@ void Rectangulo::dibujar() {
     texto = sustitucionRegex(texto, "\\{b\\+a\\}", b + a, 5, { AZUL });
     texto = sustitucionRegex(texto, "\\{2\\*\\(b\\+a\\)\\}", 2 * (b + a), 9, { VERDE });
     texto = sustitucionRegex(texto, "\\{bb\\*aa\\}", b * a, 7, { VERDE });
-    cout << texto << "\n";
+    std::cout << texto << "\n";
 }
