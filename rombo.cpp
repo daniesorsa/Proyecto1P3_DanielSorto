@@ -1,7 +1,5 @@
 #include "rombo.h"
 #include "funciones.h"
-#include <iostream>
-using namespace std;
 
 Rombo::Rombo(double a, double d, double D) : a(a), d(d), D(D) {}
 

@@ -1,7 +1,5 @@
 #include "rectangulo.h"
 #include "funciones.h"
-#include <iostream>
-using namespace std;
 
 Rectangulo::Rectangulo(double a, double b) : a(a), b(b) {}
 

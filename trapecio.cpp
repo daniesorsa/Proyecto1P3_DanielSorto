@@ -1,7 +1,5 @@
 #include "trapecio.h"
 #include "funciones.h"
-#include <iostream>
-using namespace std;
 
 Trapecio::Trapecio(double a, double b, double c, double h, double B) : a(a), b(b), c(c), h(h), B(B) {}
 

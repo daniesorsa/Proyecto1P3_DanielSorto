@@ -142,7 +142,7 @@
     <ClCompile Include="circulo.cpp" />
     <ClCompile Include="cometa.cpp" />
     <ClCompile Include="cuadrado.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Figuras_Planas.cpp" />
     <ClCompile Include="paralelogramo.cpp" />
     <ClCompile Include="rectangulo.cpp" />
     <ClCompile Include="rombo.cpp" />

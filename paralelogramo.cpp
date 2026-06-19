@@ -1,7 +1,5 @@
 #include "paralelogramo.h"
 #include "funciones.h"
-#include <iostream>
-using namespace std;
 
 Paralelogramo::Paralelogramo(double a, double b, double h) : a(a), b(b), h(h) {}
 

@@ -1,7 +1,5 @@
 #include "cometa.h"
 #include "funciones.h"
-#include <iostream>
-using namespace std;
 
 Cometa::Cometa(double a, double b, double d, double D) : a(a), b(b), d(d), D(D) {}
 

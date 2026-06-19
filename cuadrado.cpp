@@ -1,7 +1,5 @@
 #include "cuadrado.h"
 #include "funciones.h"
-#include <iostream>
-using namespace std;
 
 Cuadrado::Cuadrado(double a) : a(a) {}
 

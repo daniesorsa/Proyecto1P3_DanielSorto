@@ -1,7 +1,5 @@
 #include "triangulo.h"
 #include "funciones.h"
-#include <iostream>
-using namespace std;
 
 Triangulo::Triangulo(double a, double b, double c, double h) : a(a), b(b), c(c), h(h) {}
 

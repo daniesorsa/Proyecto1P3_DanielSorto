@@ -1,8 +1,6 @@
 #include "circulo.h"
 #include "funciones.h"
-#include <iostream>
 #define PI 3.141
-using namespace std;
 
 Circulo::Circulo(double r) : r(r) {}
 

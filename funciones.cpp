@@ -1,5 +1,4 @@
 #include "funciones.h"
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <regex>
@@ -12,8 +11,6 @@
 #include "cometa.h"
 #include "trapecio.h"
 #include "circulo.h"
-
-using namespace std;
 
 void mostrarAyuda() {
     cout << "Uso: " << AMARILLO << "Figuras_Planas.exe" << RESET << " ACCIÓN " << FONDO_MORADO << "[VARIABLES]" << RESET << "\n";
@@ -33,78 +30,96 @@ void mostrarAyuda() {
 
 string aMinuscula(string texto) {
     string res = "";
-    for (int i = 0; i < (int)texto.length(); ++i) {
-        if (texto[i] >= 'A' && texto[i] <= 'Z') {
-            res += tolower(texto[i]);
-        } else if ((unsigned char)texto[i] == 0xC3 && i + 1 < (int)texto.length()) {
-            unsigned char sig = texto[++i];
-            if      (sig == 0x81) res += "\xc3\xa1";
-            else if (sig == 0x89) res += "\xc3\xa9";
-            else if (sig == 0x8D) res += "\xc3\xad";
-            else if (sig == 0x93) res += "\xc3\xb3";
-            else if (sig == 0x9A) res += "\xc3\xba";
-            else                  res += texto[i - 1];
-        } else {
-            res += texto[i];
-        }
+    for (int indice = 0; indice < (int)texto.length(); ++indice) {
+        if (texto[indice] >= 'A' && texto[indice] <= 'Z')
+            res += tolower(texto[indice]);
+        else if ((unsigned char)texto[indice] == 195 && indice + 1 < texto.length()) {
+            unsigned char siguiente = texto[indice + 1];
+            if(siguiente == 129)
+                siguiente = 161; // á
+            else if (siguiente == 137)  
+                siguiente = 169; // é
+            else if (siguiente == 141)  
+                siguiente = 173; // í
+            else if (siguiente == 147)
+                siguiente = 179; // ó
+            else if (siguiente == 154)
+                siguiente = 186; // ú
+            res += texto[indice];
+            res += siguiente;
+            indice++;
+        } else
+            res += texto[indice];
     }
     return res;
 }
 
 OpcionFigura obtenerOpcion(const string& accion) {
     string acc = aMinuscula(accion);
-    if (acc == "ayuda")                              return AYUDA;
-    if (acc == "triángulo"  || acc == "triangulo")  return TRIANGULO;
-    if (acc == "paralelogramo")                      return PARALELOGRAMO;
-    if (acc == "rectángulo" || acc == "rectangulo") return RECTANGULO;
-    if (acc == "cuadrado")                           return CUADRADO;
-    if (acc == "rombo")                              return ROMBO;
-    if (acc == "cometa")                             return COMETA;
-    if (acc == "trapecio")                           return TRAPECIO;
-    if (acc == "circulo"    || acc == "círculo")     return CIRCULO;
+    if (acc == "ayuda")
+        return AYUDA;
+    else if (acc == "triángulo"  || acc == "triangulo")
+        return TRIANGULO;
+    else if (acc == "paralelogramo")
+        return PARALELOGRAMO;
+    else if (acc == "rectángulo" || acc == "rectangulo")
+        return RECTANGULO;
+    else if (acc == "cuadrado")
+        return CUADRADO;
+    else if (acc == "rombo")
+        return ROMBO;
+    else if (acc == "cometa")
+        return COMETA;
+    else if (acc == "trapecio")
+        return TRAPECIO;
+    else if (acc == "circulo"    || acc == "círculo")
+        return CIRCULO;
     return INVALIDO;
 }
 
-string leerArchivo(const string& nombre) {
-    ifstream archivo(nombre);
-    if (!archivo.is_open()) return "Error: No se pudo abrir el archivo " + nombre + "\n";
-    ostringstream ss;
-    ss << archivo.rdbuf();
-    return ss.str();
+string leerArchivo(const string& nombreArchivo) {
+    ifstream archivo("../../" + nombreArchivo);
+    if (!archivo.is_open())
+        return "Error, no se pudo abrir el archivo " + nombreArchivo + "\n";
+    stringstream buffer;
+    buffer << archivo.rdbuf();
+    archivo.close();
+    return buffer.str();
 }
 
-string formatoDeNumeros(double val, int ancho, const string& color) {
-    ostringstream out;
-    out << val;
-    string s = out.str();
-    int izq = 0, der = 0;
-    if ((int)s.length() < ancho) {
-        int espacios = ancho - (int)s.length();
-        izq = espacios / 2;
-        der = espacios - izq;
+string formatoDeNumeros(double valorActual, int ancho, const string& color) {
+    stringstream out;
+    out << valorActual;
+    string valorActualStr = out.str();
+    int espaciosIzqquierda = 0;
+    int espaciosDerecha = 0;
+    if (valorActualStr.length() < ancho) {
+        int totalEspacios = ancho - valorActualStr.length();
+        espaciosIzqquierda = totalEspacios / 2;
+        espaciosDerecha = totalEspacios - espaciosIzqquierda;
     }
-    return string(izq, ' ') + color + s + RESET + string(der, ' ');
+    return string(espaciosIzqquierda, ' ') + color + valorActualStr + RESET + string(espaciosDerecha, ' ');
 }
 
-string sustitucionRegex(string texto, const string& patron, double valor, int ancho, const vector<string>& colores) {
-    regex e(patron);
-    smatch m;
+string sustitucionRegex(string texto, const string& patron, double valorActual, int ancho, const vector<string>& colores) {
+    regex expresion(patron);
+    smatch coincidencia; // pre-expresion, expresion, postexpresion
     string res = "";
-    int indice = 0;
+    int indiceColor = 0;
     string::const_iterator inicio(texto.cbegin());
-    while (regex_search(inicio, texto.cend(), m, e)) {
-        res += m.prefix();
-        string color = (indice < (int)colores.size()) ? colores[indice] : colores.back();
-        res += formatoDeNumeros(valor, ancho, color);
-        inicio = m.suffix().first;
-        indice++;
+    while (regex_search(inicio, texto.cend(), coincidencia, expresion)) {
+        res += coincidencia.prefix();
+        string colorActual = (indiceColor < colores.size()) ? colores[indiceColor] : colores.back();
+        res += formatoDeNumeros(valorActual, ancho, colorActual);
+        inicio = coincidencia.suffix().first;
+        indiceColor++;
     }
     res += string(inicio, texto.cend());
     return res;
 }
 
 void colorearPalabra(string& texto, const string& palabra, const string& color) {
-    size_t posicion = texto.find(palabra);
+    int posicion = texto.find(palabra);
     texto.replace(posicion, palabra.length(), color + palabra + RESET);
 }
 
@@ -118,7 +133,7 @@ void dibujarFigura(OpcionFigura opcion, const vector<string>& args) {
     }
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
-    int numVars = (int)args.size() - 2;
+    int numVars = args.size() - 2;
     try {
         switch (opcion) {
             case TRIANGULO:
@@ -162,11 +177,12 @@ void dibujarFigura(OpcionFigura opcion, const vector<string>& args) {
                 else mostrarAyuda();
                 break;
             default:
+                cout << "\nNombre de figura o archivo incorrecto\n";
                 mostrarAyuda();
                 break;
         }
     } catch (...) {
-        cout << AMARILLO << "Error: Ingrese numér válidos.\n\n" << RESET;
+        cout << AMARILLO << "Error, ingrese un numéro válido.\n\n" << RESET;
         mostrarAyuda();
     }
 }
